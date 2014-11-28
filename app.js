@@ -32,18 +32,19 @@
       // console.log('Parsed CSV' +this.parsedCSV);
       console.log(encodeURI('test@test.com.nz'));
 
-      this.ajax('createTicket', 'Test Ticket', 'Test Description');
+      // this.ajax('createTicket', 'Test Ticket', 'Test Description');
+      this.ajax('importTicket');
 
-      var that = this;
-      _.each(this.parsedCSV, function(each) {
-        console.log("EACH");
-        that.subject = each[0];
-        that.description = each[1];
-        console.log(that.subject);
-        console.log(that.description);
-      console.log('Test');
-      that.ajax('createTicket',subject, description);
-      });
+      // var that = this;
+      // _.each(this.parsedCSV, function(each) {
+      //   console.log("EACH");
+      //   that.subject = each[0];
+      //   that.description = each[1];
+      //   console.log(that.subject);
+      //   console.log(that.description);
+      // console.log('Test');
+      // that.ajax('createTicket',subject, description);
+      // });
     },
 
     testFunction: function() {
@@ -74,6 +75,22 @@
 
           url: '/requests/embedded/create.json?subject=TestTicket&description=TestTicket&name=TrainingJIRAApp&email=' + encodeURI(this.email) + '',
           dataType: 'JSON'
+        };
+      },
+
+      importTicket: function() {
+        return {
+          url: '/api/v2/imports/tickets.json',
+          type: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify({
+            "ticket": {
+              "subject": "My printer is on fire!",
+              "comment": {
+                "body": "The smoke is very colorful."
+              }
+            }
+          })
         };
       }
     } //end of requests
