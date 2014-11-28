@@ -1,0 +1,10 @@
+JIRA Ticket 1,"When we file a ticket in Zendesk and put attachments, the attachments doesn't go over to Jira. Is that how its suppose to work? It doesn't allow attachment to bridge over from Zendesk to Jira. If not, can you let us know what settings we need to configure to allow the passing of attachment from one system to another"
+JIRA Ticket 2,I want labels to sync from my JIRA to my Zendesk. I am using JIRA OnPremise. Can it be done?
+JIRA Ticket 3,Is there a way to update the ticket's status in Zendesk when the Resolution changes in JIRA?
+JIRA Ticket 4,I recently changed my Zendesk subdomain and now all of my tickets are not linked to JIRA anymore! I'm using JIRA OnDemand. Can it be fixed?
+JIRA Ticket 5,Can I link two Zendesk accounts to my JIRA instance?
+JIRA Ticket 6,I am using JIRA OnPremise 6.4.1. Your setup guide says you only support up to 6.3.4. Can I still use the JIRA integration?
+JIRA Ticket 7,I am using JIRA OnDemand. I would like to do custom field syncing. Which JIRA integration should I use?
+JIRA Ticket 8,"I am using JIRA OnPremise. However, the ticket sharing agreement never reaches Zendesk. Why is that?"
+JIRA Ticket 9,I'm trying to set up the Zendesk for JIRA integration but I can't see Zendesk as an external system type. HALP.
+JIRA Ticket 10,I'm getting a ÒDid you set up the integration correctly?Ó error when trying to see my JIRA tickets in Zendesk. What happened?

@@ -1,0 +1,14 @@
+<header>
+  <span class="logo"/>
+  <h3>{{setting "name"}}</h3>
+</header>
+<section data-main/>
+<select >
+        <option value="{{group_id}}">JIRA</option>
+      </select>
+<input type="submit" value="Create tickets" class="creator" />
+<!-- <footer>
+  <a href="mailto:{{author.email}}">
+    {{author.name}}
+  </a>
+</footer> -->
