@@ -1,0 +1,22 @@
+.btn-submit {
+  background-color: #78A300;
+  color: white;
+  width: 100%;
+  margin: 10px auto;
+}
+
+.app-btn {
+    width: 50%;
+}
+
+.input-group {
+	margin: 10px auto;
+}
+
+.form-control {
+	width: 95%;
+}
+
+.btn-submit:hover {
+	box-shadow: none;
+}

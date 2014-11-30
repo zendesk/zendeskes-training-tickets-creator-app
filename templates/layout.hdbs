@@ -1,14 +1,34 @@
 <header>
-  <span class="logo"/>
-  <h3>{{setting "name"}}</h3>
+	<span class="logo"/>
+	<h3>{{setting "name"}}</h3>
 </header>
+<div class="input-group">
+	<span class="input-group-addon"><strong>Trainer Name:</strong> </span>
+	<input type="text" class="form-control name" placeholder="Name">
+</div>
+<div class="input-group">
+	<span class="input-group-addon"><strong>Trainer Email Address:</strong> </span>
+	<input type="email" class="form-control email" placeholder="Email Address">
+</div>
+
 <section data-main/>
-<select >
-        <option value="{{group_id}}">JIRA</option>
-      </select>
-<input type="submit" value="Create tickets" class="creator" />
+<strong>Product Area: </strong>
+<select id="productArea">
+	<option value="jira">JIRA</option>
+	<option value="ssl">Domains & SSL</option>
+	<option value="voice">Voice</option>
+	<option value="email">Email</option>
+</select>
+
+<input type="submit" value="Create tickets" class="creator btn btn-submit" />
+<!-- <select>
+{{#each setting}}
+<option>{{this}}</option>
+{{/each}}
+</select> -->
 <!-- <footer>
   <a href="mailto:{{author.email}}">
     {{author.name}}
   </a>
+{{setting 'Product'}}
 </footer> -->

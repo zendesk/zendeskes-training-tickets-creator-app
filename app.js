@@ -4,95 +4,85 @@
   csvParser.RELAXED = true;
 
   return {
+    //global vars
     parsedCSV: null,
     subject: null,
     description: null,
-    email: 'test@test.com.nz',
+    requesterEmail: null,
+    requesterName: null,
+    productArea: null,
+
     events: {
-      // 'getCSV.done':pa
-      'click.creator': 'getCSVFile',
+      'click .creator': 'getCSVFile',
+      'getCSV.fail': 'errorMessage',
       'getCSV.done': 'parseCSV',
     }, //end of events
 
     getCSVFile: function() {
-      this.ajax('getCSV');
-    },
+      this.requesterName = this.$(".name").val(); //setting requester name from input field
+      this.requesterEmail = this.$(".email").val(); //setting requester email from input field
+      this.productArea = this.$("#productArea option:selected").val(); //setting product area from dropdown
+
+      /*Checking if requesterName and requester Email was set*/
+      if (this.requesterName.length === 0 || this.requesterEmail.length === 0) {
+        services.notify('Requester Name or Email Cannot Be Blank', 'alert');
+        return;
+      }
+
+      this.ajax('getCSV', this.productArea); //getting CSV file
+    }, //end of getCSVFile
+
+    errorMessage: function() {
+      services.notify("Unable to retrieve file!", 'error');
+    }, //end of errorMessage
 
     parseCSV: function(data) {
-      console.log("About to parse CSV");
-      // console.log('CSV DATA' + '\n' + data);
-      this.parsedCSV = csvParser.parse(data);
-      // console.log(this.parsedCSV);
-      this.makeTickets();
-    },
+      this.parsedCSV = csvParser.parse(data); //parseCSV and set parsedCSV var
+      this.makeTickets(); //createTickets
+    }, //end of parseCSV
 
 
     makeTickets: function() {
-      console.log("LET'S Fill It With Tickets!!");
-      // console.log('Parsed CSV' +this.parsedCSV);
-      console.log(encodeURI('test@test.com.nz'));
 
-      // this.ajax('createTicket', 'Test Ticket', 'Test Description');
-      this.ajax('importTicket');
-
-      // var that = this;
-      // _.each(this.parsedCSV, function(each) {
-      //   console.log("EACH");
-      //   that.subject = each[0];
-      //   that.description = each[1];
-      //   console.log(that.subject);
-      //   console.log(that.description);
-      // console.log('Test');
-      // that.ajax('createTicket',subject, description);
-      // });
-    },
-
-    testFunction: function() {
-      console.log("testFunction");
-    },
+      var that = this;
+      _.each(this.parsedCSV, function(each) { //iterate over parsedCSV
+        that.subject = each[0]; //setting subject
+        that.description = each[1]; //setting description
+        that.ajax('importTicket', that.subject, that.description, that.requesterName, that.requesterEmail); //making request to import ticket
+      });
+      services.notify('Done Creating Tickets!', 'notice');
+    }, //end of makeTickets
 
     requests: {
 
-      getCSV: function() {
+      getCSV: function(fileName) {
         return {
-          //https://dl.dropboxusercontent.com/u/23462139/training1.csv
-          url: 'https://dl.dropboxusercontent.com/u/23462139/training1.csv',
+          // https://dl.dropboxusercontent.com/u/23462139/T2%20Training/jira.csv
+          url: 'https://dl.dropboxusercontent.com/u/23462139/T2%20Training/' + fileName + '.csv',
           type: 'GET',
           cors: true
         };
-      },
+      }, //end of getCSV
 
-      createTicket: function(subject, description) {
-        return {
-          //'/requests/embedded/create.json?subject=' + this.newSub + '&description='+ this.newDesc + '&name=' + this.newRequester  + '&email='+ encodeURI(this.newEmail) + '',
-          // url: '/requests/embedded/create.json?subject=' + this.subject + '&description='+ this.description + '&name=Training App'  + '&email='+ encodeURI(this.email),
-
-          //WORKING:
-          /*
-          https://pchhetri.zendesk.com/requests/embedded/create.json?subject=TestTicket&description=TestTicket&name=TrainingApp&email=test@test.com.nz
-          */
-
-
-          url: '/requests/embedded/create.json?subject=TestTicket&description=TestTicket&name=TrainingJIRAApp&email=' + encodeURI(this.email) + '',
-          dataType: 'JSON'
-        };
-      },
-
-      importTicket: function() {
-        return {
-          url: '/api/v2/imports/tickets.json',
-          type: 'POST',
-          contentType: 'application/json',
-          data: JSON.stringify({
-            "ticket": {
-              "subject": "My printer is on fire!",
-              "comment": {
-                "body": "The smoke is very colorful."
+      importTicket: function(subject, description, requesterName, requesterEmail) {
+          return {
+            url: '/api/v2/imports/tickets.json',
+            type: 'POST',
+            contentType: 'application/json', //data:json doesn't work O.o
+            data: JSON.stringify({
+              "ticket": {
+                "requester": {
+                  "name": requesterName,
+                  "email": requesterEmail
+                },
+                "subject": subject,
+                "comment": {
+                  "body": description
+                }
               }
-            }
-          })
-        };
-      }
+            })
+          };
+        } //end of importTicket
     } //end of requests
 
   };
