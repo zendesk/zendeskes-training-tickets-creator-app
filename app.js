@@ -57,8 +57,7 @@
 
       getCSV: function(fileName) {
         return {
-          // https://dl.dropboxusercontent.com/u/23462139/T2%20Training/jira.csv
-          url: 'https://dl.dropboxusercontent.com/u/23462139/T2%20Training/' + fileName + '.csv',
+          url: 'https://zendesk.box.com/shared/static/' + fileName + '.csv',
           type: 'GET',
           cors: true
         };
