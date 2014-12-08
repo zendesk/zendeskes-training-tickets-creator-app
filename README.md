@@ -1,6 +1,6 @@
-# Training Tickets Creator
+# App name
 
-This app creates test tickets on the account, for the appropriate product area.
+[brief description of the app]
 
 ### The following information is displayed:
 
@@ -8,7 +8,7 @@ This app creates test tickets on the account, for the appropriate product area.
 * info2
 * info3
 
-Please submit bug reports to [Insert Link](https://github.com/pchhetri/Training-Tickets/issues). Pull requests are welcome.
+Please submit bug reports to [Insert Link](). Pull requests are welcome.
 
 ### Screenshot(s):
-![](http://cl.ly/image/0y3e1R1t2G00/Image%202014-12-01%20at%205.34.35%20PM.png)
+[put your screenshots down here.]

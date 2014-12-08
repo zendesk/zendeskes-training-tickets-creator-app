@@ -14,8 +14,8 @@
 <section data-main/>
 <strong>Product Area: </strong>
 <select id="productArea">
-	<option value="z64uov171lbyflhr7f0h">JIRA</option>
-	<option value="ifyu66fuq528je37z">Domains & SSL</option>
+	<option value="jira">JIRA</option>
+	<option value="ssl">Domains & SSL</option>
 	<option value="voice">Voice</option>
 	<option value="email">Email</option>
 </select>
