@@ -48,7 +48,12 @@
       _.each(this.parsedCSV, function(each) { //iterate over parsedCSV
         that.subject = each[0]; //setting subject
         that.description = each[1]; //setting description
-        that.ajax('importTicket', that.subject, that.description, that.requesterName, that.requesterEmail); //making request to import ticket
+        that.ajax('importTicket', that.subject, that.description, that.requesterName, that.requesterEmail).done(function(data) {
+            console.log("Created a ticket");
+          })
+          .fail(function() {
+            console.log("Request failed");
+          }); //making request to import ticket
       });
       services.notify('Done Creating Tickets!', 'notice');
     }, //end of makeTickets
@@ -57,10 +62,12 @@
 
       getCSV: function(fileName) {
         return {
-          // https://dl.dropboxusercontent.com/u/23462139/T2%20Training/jira.csv
-          url: 'https://dl.dropboxusercontent.com/u/23462139/T2%20Training/' + fileName + '.csv',
+          // url: 'https://dl.dropboxusercontent.com/u/23462139/T2%20Training/jira.csv',
+          // url: 'https://zendesk.box.com/shared/static/z64uov171lbyflhr7f0h.csv',
+          url: '/proxy/direct?url=https://zendesk.box.com/shared/static/' + fileName + '.csv',
           type: 'GET',
-          cors: true
+          cors: true,
+          dataType: 'text',
         };
       }, //end of getCSV
 
@@ -85,6 +92,6 @@
         } //end of importTicket
     } //end of requests
 
-  };
+  }; //end of return
 
 }());

@@ -14,10 +14,11 @@
 <section data-main/>
 <strong>Product Area: </strong>
 <select id="productArea">
-	<option value="jira">JIRA</option>
-	<option value="ssl">Domains & SSL</option>
-	<option value="voice">Voice</option>
+	<option value="axp0p7kfqlc0kpdfe62j">Apps Framework</option>
+	<option value="2i7ifyu66fuq528je37z">Domains & SSL</option>
 	<option value="email">Email</option>
+	<option value="z64uov171lbyflhr7f0h">JIRA</option>
+	<option value="voice">Voice</option>
 </select>
 
 <input type="submit" value="Create tickets" class="creator btn btn-submit" />
