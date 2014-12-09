@@ -3,25 +3,34 @@
 	<h3>{{setting "name"}}</h3>
 </header>
 <div class="input-group">
-	<span class="input-group-addon"><strong>Trainer Name:</strong> </span>
-	<input type="text" class="form-control name" placeholder="Name">
+	<span class="input-group-addon"><strong>Trainer Name:<span style="color:red">*</span></strong> </span>
+	<input type="text" class="form-control name" placeholder="The Mentor">
 </div>
 <div class="input-group">
-	<span class="input-group-addon"><strong>Trainer Email Address:</strong> </span>
-	<input type="email" class="form-control email" placeholder="Email Address">
+	<span class="input-group-addon"><strong>Trainer Email Address:<span style="color:red">*</span></strong> </span>
+	<input type="email" class="form-control email" placeholder="mentor@example.org">
 </div>
 
 <section data-main/>
 <strong>Product Area: </strong>
 <select id="productArea">
-	<option value="axp0p7kfqlc0kpdfe62j">Apps Framework</option>
+	<!-- <option value="api">API</option> -->
+	<option value="axp0p7kfqlc0kpdfe62j">Apps</option>
 	<option value="2i7ifyu66fuq528je37z">Domains & SSL</option>
-	<option value="email">Email</option>
+	<!-- <option value="email">Email</option> -->
+	<!-- <option value="hc">Help Center</option> -->
+	<!-- <option value="voice">Insights</option> -->
 	<option value="z64uov171lbyflhr7f0h">JIRA</option>
-	<option value="voice">Voice</option>
+	<!-- <option value= "logs">Logs & Email Processing</option> -->
+	<!-- <option value= "salesforce">Salesforce</option> -->
+	<!-- <option value= "social_media">Social Media (Facebook/Twitter)</option> -->
+	<!-- <option value= "sso">SSO (SAML/JWT)</option> -->
+	<!-- <option value= "zopim">Zopim</option> -->
+	<!-- <option value="voice">Voice</option> -->
+	<option value="8fdxys3kuoqt29ikweaw">Test</option>
 </select>
 
-<input type="submit" value="Create tickets" class="creator btn btn-submit" />
+<input type="submit" value="Create Tickets" class="creator btn btn-submit" />
 <!-- <select>
 {{#each setting}}
 <option>{{this}}</option>
