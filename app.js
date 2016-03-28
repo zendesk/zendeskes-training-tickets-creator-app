@@ -104,14 +104,15 @@
                     }); // end of ajax call to create tickets
                 that.promises.push(request);
             }); // end of _.each to iterate over parsedCSV
-
-            Promise.all(this.promises).then(function (argument) {
+            /* jshint ignore:start */
+            Promise.all(this.promises).then(function (argument){
                 services.notify('Successfully Created Tickets! :)', 'notice', 8000);
                 this.$('#createTickets').prop('disabled', false);
             },function(argument) {
                 services.notify('Error in Creating tickets :(', 'error', 8000);
                 this.$('#createTickets').prop('disabled', false);
             });
+            /* jshint ignore:end */
         }, //end of makeTickets
 
         requests: {
