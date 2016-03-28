@@ -1,44 +1,27 @@
 <header>
-	<span class="logo"/>
-	<h3>{{setting "name"}}</h3>
+    <span class="logo" />
+    <h3>{{setting "name"}}</h3>
 </header>
-<div class="input-group">
-	<span class="input-group-addon"><strong>Trainer Name:<span style="color:red">*</span></strong> </span>
-	<input type="text" class="form-control name" placeholder="The Mentor">
+    <div class="form-group required">
+        <label for="inputName">Trainer Name:</label>
+        <input type="text" class="form-control" id="inputName" placeholder="The Mentor">
+    </div>
+    <div class="form-group required">
+        <label for="inputEmail">Email address:</label>
+        <input type="email" class="form-control" id="inputEmail" placeholder="mentor@example.org">
+    </div>
+</form>
+<div class="form-group">
+    <label for="department">Department:</label>
+    <select class="form-control" id="selDepartment">
+        <option value="tees1nkomjf6uowu44da7xaa1m56hm79">Sales</option>
+        <option value="tier1">Tier 1</option>
+        <option value="tier2">Tier 2</option>
+    </select>
 </div>
-<div class="input-group">
-	<span class="input-group-addon"><strong>Trainer Email Address:<span style="color:red">*</span></strong> </span>
-	<input type="email" class="form-control email" placeholder="mentor@example.org">
+<section data-main></section>
+<div class="progress">
+    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+    </div>
 </div>
-
-<section data-main/>
-<strong>Product Area: </strong>
-<select id="productArea">
-	<!-- <option value="api">API</option> -->
-	<option value="axp0p7kfqlc0kpdfe62j">Apps</option>
-	<option value="2i7ifyu66fuq528je37z">Domains & SSL</option>
-	<!-- <option value="email">Email</option> -->
-	<!-- <option value="hc">Help Center</option> -->
-	<!-- <option value="voice">Insights</option> -->
-	<option value="z64uov171lbyflhr7f0h">JIRA</option>
-	<!-- <option value= "logs">Logs & Email Processing</option> -->
-	<!-- <option value= "salesforce">Salesforce</option> -->
-	<!-- <option value= "social_media">Social Media (Facebook/Twitter)</option> -->
-	<!-- <option value= "sso">SSO (SAML/JWT)</option> -->
-	<!-- <option value= "zopim">Zopim</option> -->
-	<!-- <option value="voice">Voice</option> -->
-	<option value="8fdxys3kuoqt29ikweaw">Test</option>
-</select>
-
-<input type="submit" value="Create Tickets" class="creator btn btn-submit" />
-<!-- <select>
-{{#each setting}}
-<option>{{this}}</option>
-{{/each}}
-</select> -->
-<!-- <footer>
-  <a href="mailto:{{author.email}}">
-    {{author.name}}
-  </a>
-{{setting 'Product'}}
-</footer> -->
+<button type="button" class="btn btn-primary btn-block createTickets">Create Tickets</button>

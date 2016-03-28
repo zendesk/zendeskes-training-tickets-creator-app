@@ -1,0 +1,18 @@
+<div class="form-group">
+  <label for="productArea">Product Area:</label>
+  <select class="form-control" id="selProductArea">
+    <!-- <option value="api">API</option> -->
+	<option value="axp0p7kfqlc0kpdfe62j">Apps</option>
+	<option value="2i7ifyu66fuq528je37z">Domains & SSL</option>
+	<!-- <option value="email">Email</option> -->
+	<!-- <option value="hc">Help Center</option> -->
+	<!-- <option value="voice">Insights</option> -->
+	<option value="z64uov171lbyflhr7f0h">JIRA</option>
+	<!-- <option value= "logs">Logs & Email Processing</option> -->
+	<!-- <option value= "salesforce">Salesforce</option> -->
+	<!-- <option value= "social_media">Social Media (Facebook/Twitter)</option> -->
+	<!-- <option value= "sso">SSO (SAML/JWT)</option> -->
+	<!-- <option value= "zopim">Zopim</option> -->
+	<!-- <option value="voice">Voice</option> -->
+  </select>
+</div>
