@@ -14,10 +14,11 @@
         requesterID: null,
         errorTicketCreate: null,
         counter: null,
+        promises: null,
 
         events: {
             'change #selDepartment': 'changeTemplate',
-            'click .createTickets': 'getCSVFile',
+            'click #createTickets': 'getCSVFile',
             'getCSV.fail': 'errorGettingCSV',
             'getCSV.done': 'parseCSV',
             'searchRequester.done': 'makeRequester'
@@ -35,6 +36,7 @@
             }
         },
         getCSVFile: function() {
+            this.$('#createTickets').prop('disabled', true);
             this.counter = 0;
             this.$('div.progress > div.progress-bar').css({ "width": "0%" });
             this.requesterName = this.$("#inputName").val(); //setting requester name from input field
@@ -81,27 +83,35 @@
         }, //end of makeRequester
 
         makeTickets: function() {
+            this.promises = [];
             var num = null;
             var that = this; // aliasing this to another var to use inside _.each function
             _.each(this.parsedCSV, function(each, i, l) { //iterate over parsedCSV
                 that.num = l.length;
                 that.subject = each[0]; //setting subject
                 that.description = each[1]; //setting description
-                that.ajax('importTicket', that.subject, that.description, that.requesterID) // call to create tickets
+                var request = that.ajax('importTicket', that.subject, that.description, that.requesterID) // call to create tickets
                     .done(function(data) {
                         that.counter += 1;
                         var percentComplete = (that.counter / that.num) * 100;
-                        console.log('Created a Ticket: ' + that.subject); // console logging upon success for debugging
+                        console.log('Created a Ticket'); // console logging upon success for debugging
                         that.$('div.progress > div.progress-bar').css({ "width": percentComplete + "%" });
-                        if (percentComplete == 100) that.$(".progress-bar").text("DONE!");
                     })
                     .fail(function(jqXHR) {
-                        console.log('Ticket Creation failed: ' + that.subject + '\n' + jqXHR.status + ' ' + jqXHR.responseText); // console logging error for easy debugging
+                        console.log('Ticket Creation failed\n' + jqXHR.status + ' ' + jqXHR.responseText); // console logging error for easy debugging
                         that.errorTicketCreate = true;
-                        services.notify('Error in creating ticket :(', 'error', 8000);
                         return;
                     }); // end of ajax call to create tickets
+                that.promises.push(request);
             }); // end of _.each to iterate over parsedCSV
+
+            Promise.all(this.promises).then(function (argument) {
+                services.notify('Successfully Created Tickets! :)', 'notice', 8000);
+                this.$('#createTickets').prop('disabled', false);
+            },function(argument) {
+                services.notify('Error in Creating tickets :(', 'error', 8000);
+                this.$('#createTickets').prop('disabled', false);
+            });
         }, //end of makeTickets
 
         requests: {
