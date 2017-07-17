@@ -2,6 +2,7 @@
   <label for="productArea">Area:</label>
   <select class="form-control" id="selProductArea">
 	<option value="oqs3tujodm2lrhs8gxwhbuhogirhnblz">General</option>
+	<option value="k1y9j9hqohw3h7oq41tz2o0pho2zh34d">Social</option>
 	<option value="35xo9xh3t0dmrglzom1b8ebsbqz2jh5n">Triage</option>
   </select>
 </div>
