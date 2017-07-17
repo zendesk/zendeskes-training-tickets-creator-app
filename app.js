@@ -36,13 +36,8 @@
             }
         },
         getCSVFile: function() {
-            this.$('#createTickets').prop('disabled', true);
-            this.counter = 0;
-            this.$('div.progress > div.progress-bar').css({ "width": "0%" });
             this.requesterName = this.$("#inputName").val(); //setting requester name from input field
             this.requesterEmail = this.$("#inputEmail").val(); //setting requester email from input field
-            this.productArea = this.$("#selProductArea option:selected").val(); //setting product area from dropdown
-            if (this.productArea === undefined) this.productArea = this.$("#selDepartment option:selected").val();
             /*Checking if requesterName and requesterEmail was set*/
             if (this.requesterName.length === 0) {
                 services.notify('Trainer Name is Required!', 'alert', 8000);
@@ -51,6 +46,11 @@
                 services.notify('Trainer Email is Required!', 'alert', 8000);
                 return;
             }
+            this.productArea = this.$("#selProductArea option:selected").val(); //setting product area from dropdown
+            if (this.productArea === undefined) this.productArea = this.$("#selDepartment option:selected").val();
+            this.$('#createTickets').prop('disabled', true);
+            this.counter = 0;
+            this.$('div.progress > div.progress-bar').css({ "width": "0%" });
 
             this.ajax('getCSV', this.productArea); //getting CSV file
         }, //end of getCSVFile
